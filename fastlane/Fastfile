@@ -1,0 +1,53 @@
+# More documentation about how to customize your build
+# can be found here:
+# https://docs.fastlane.tools
+
+fastlane_version "1.109.0"
+default_platform :ios
+
+desc "Release a new beta version on Testflight"
+desc "This action does the following:"
+desc ""
+desc "- Ensures a clean git status"
+desc "- Increment the build number"
+desc "- Build and sign the app"
+desc "- Upload the ipa file to Testflight"
+desc "- Commit and push the version bump"
+
+lane :beta do
+
+  # make sure we start off with a clean slate
+  ensure_git_status_clean
+
+  # increment build number
+  increment_build_number
+
+  # increment to the specified version number
+  increment_version_number
+  version = increment_version_number
+
+  # build your iOS app
+  gym(
+    # scheme: "insights-for-instagram",
+    export_method: "app-store"
+  )
+
+  # upload to Testflight
+  pilot(skip_waiting_for_build_processing: true)
+
+  # make sure our directory is clean, except for changes Fastlane has made
+  clean_build_artifacts
+
+  # tag release and push to GitHub
+  sh "git add .. ; git commit -m 'Deploying version #{version}.'"
+  add_git_tag tag: version
+  push_to_git_remote
+end
+
+error do |lane, exception|
+  if lane == :deploy
+    puts "Unable to deploy, resetting git repository."
+    clean_build_artifacts
+    reset_git_repo
+  end
+end
