@@ -12,42 +12,25 @@
 		AD4142E31F6FD78E00A83795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */; };
 		AD4142E41F6FD78E00A83795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */; };
 		AD42A34E1F6ACC650023151C /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42A34D1F6ACC650023151C /* BaseInteractor.swift */; };
-		AD42A34F1F6ACC650023151C /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42A34D1F6ACC650023151C /* BaseInteractor.swift */; };
 		AD61BABD1F6BDBF900307E92 /* AddAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD61BABC1F6BDBF900307E92 /* AddAccountPresenter.swift */; };
-		AD61BABE1F6BDBF900307E92 /* AddAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD61BABC1F6BDBF900307E92 /* AddAccountPresenter.swift */; };
 		AD6C69081F390A4E00039B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6C69061F390A4E00039B66 /* Main.storyboard */; };
 		AD6C690A1F390A4E00039B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD6C69091F390A4E00039B66 /* Assets.xcassets */; };
 		ADB36EDB1F7306DA002844FD /* InstagramMediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB36EDA1F7306DA002844FD /* InstagramMediaTests.swift */; };
 		ADD71BCF1F6AE47800251445 /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BCE1F6AE47800251445 /* InstagramAPI.swift */; };
-		ADD71BD01F6AE47800251445 /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BCE1F6AE47800251445 /* InstagramAPI.swift */; };
 		ADD71BD31F6AE48500251445 /* InstagramMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD21F6AE48500251445 /* InstagramMedia.swift */; };
-		ADD71BD41F6AE48500251445 /* InstagramMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD21F6AE48500251445 /* InstagramMedia.swift */; };
 		ADD71BDA1F6AE49B00251445 /* InsightsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD61F6AE49B00251445 /* InsightsInteractor.swift */; };
-		ADD71BDB1F6AE49B00251445 /* InsightsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD61F6AE49B00251445 /* InsightsInteractor.swift */; };
 		ADD71BDD1F6AE49B00251445 /* InsightsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD71F6AE49B00251445 /* InsightsPresenter.swift */; };
-		ADD71BDE1F6AE49B00251445 /* InsightsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD71F6AE49B00251445 /* InsightsPresenter.swift */; };
 		ADD71BE01F6AE49B00251445 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD81F6AE49B00251445 /* InsightsViewController.swift */; };
-		ADD71BE11F6AE49B00251445 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD81F6AE49B00251445 /* InsightsViewController.swift */; };
 		ADD71BE31F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD91F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift */; };
-		ADD71BE41F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD91F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift */; };
 		ADD71BEC1F6AE4AC00251445 /* AppUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE61F6AE4AC00251445 /* AppUserAccount.swift */; };
-		ADD71BED1F6AE4AC00251445 /* AppUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE61F6AE4AC00251445 /* AppUserAccount.swift */; };
 		ADD71BF21F6AE4AC00251445 /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE81F6AE4AC00251445 /* AppDataStore.swift */; };
-		ADD71BF31F6AE4AC00251445 /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE81F6AE4AC00251445 /* AppDataStore.swift */; };
 		ADD71BF51F6AE4AC00251445 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE91F6AE4AC00251445 /* AppConfiguration.swift */; };
-		ADD71BF61F6AE4AC00251445 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE91F6AE4AC00251445 /* AppConfiguration.swift */; };
 		ADD71BF81F6AE4AC00251445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEA1F6AE4AC00251445 /* AppDelegate.swift */; };
-		ADD71BF91F6AE4AC00251445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEA1F6AE4AC00251445 /* AppDelegate.swift */; };
 		ADD71BFB1F6AE4AC00251445 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEB1F6AE4AC00251445 /* AppExtensions.swift */; };
-		ADD71BFC1F6AE4AC00251445 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEB1F6AE4AC00251445 /* AppExtensions.swift */; };
 		ADD71C021F6AE4C100251445 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BFE1F6AE4C100251445 /* AccountViewController.swift */; };
-		ADD71C031F6AE4C100251445 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BFE1F6AE4C100251445 /* AccountViewController.swift */; };
 		ADD71C081F6AE4C100251445 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C001F6AE4C100251445 /* AddAccountViewController.swift */; };
-		ADD71C091F6AE4C100251445 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C001F6AE4C100251445 /* AddAccountViewController.swift */; };
 		ADD71C0B1F6AE4C100251445 /* AddAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C011F6AE4C100251445 /* AddAccountInteractor.swift */; };
-		ADD71C0C1F6AE4C100251445 /* AddAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C011F6AE4C100251445 /* AddAccountInteractor.swift */; };
 		ADE65DA11F59921A00F5B710 /* BaseInteractorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE65DA01F59921A00F5B710 /* BaseInteractorWorker.swift */; };
-		ADE65DA21F59921B00F5B710 /* BaseInteractorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE65DA01F59921A00F5B710 /* BaseInteractorWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,24 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADD71BFC1F6AE4AC00251445 /* AppExtensions.swift in Sources */,
-				ADD71BDE1F6AE49B00251445 /* InsightsPresenter.swift in Sources */,
-				ADD71BD41F6AE48500251445 /* InstagramMedia.swift in Sources */,
-				ADD71BDB1F6AE49B00251445 /* InsightsInteractor.swift in Sources */,
-				ADD71BF61F6AE4AC00251445 /* AppConfiguration.swift in Sources */,
-				ADD71BF91F6AE4AC00251445 /* AppDelegate.swift in Sources */,
-				ADD71BE41F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift in Sources */,
-				ADD71BED1F6AE4AC00251445 /* AppUserAccount.swift in Sources */,
-				ADD71BF31F6AE4AC00251445 /* AppDataStore.swift in Sources */,
-				AD61BABE1F6BDBF900307E92 /* AddAccountPresenter.swift in Sources */,
-				ADD71C091F6AE4C100251445 /* AddAccountViewController.swift in Sources */,
-				AD42A34F1F6ACC650023151C /* BaseInteractor.swift in Sources */,
-				ADD71BD01F6AE47800251445 /* InstagramAPI.swift in Sources */,
-				ADD71C031F6AE4C100251445 /* AccountViewController.swift in Sources */,
-				ADD71C0C1F6AE4C100251445 /* AddAccountInteractor.swift in Sources */,
-				ADE65DA21F59921B00F5B710 /* BaseInteractorWorker.swift in Sources */,
 				ADB36EDB1F7306DA002844FD /* InstagramMediaTests.swift in Sources */,
-				ADD71BE11F6AE49B00251445 /* InsightsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
