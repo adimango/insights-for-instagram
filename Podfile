@@ -11,14 +11,12 @@ target 'insights-for-instagram' do
   pod 'ObjectMapper'
   pod 'Kingfisher', '~> 3.0'
 
+  inhibit_all_warnings!
+
   target 'insights-for-instagramTests' do
     inherit! :search_paths
-    # Pods for testing
     pod 'Quick'
-    pod 'Nimble', :inhibit_warnings => true  end
+    pod 'Nimble'
   end
-
-  target 'insights-for-instagramUITests' do
-    inherit! :search_paths
-    # Pods for testing
+  
 end

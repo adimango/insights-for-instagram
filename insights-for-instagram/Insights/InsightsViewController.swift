@@ -11,6 +11,7 @@ import Kingfisher
 
 protocol InsightsViewDisplayLogic: class {
     func diplayFetchedMedia (instagramMediaSections: [InstagramMediaSection])
+    func diplayFetchMediaFailureAlert(title: String, message: String)
 }
 
 class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
@@ -112,6 +113,13 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
             self.refreshController.endRefreshing()
             self.tableView.reloadData()
         }
+    }
+    
+    func diplayFetchMediaFailureAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: AppConfiguration.Messages.okButton, style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

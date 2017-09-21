@@ -12,6 +12,7 @@ protocol AddAccountDisplayLogic: class {
     func diplayAddAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
     func diplayLoadingAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
     func diplayUpdateAccount(with accountName:String, leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
+    func diplayAlert(title: String, message: String)
 }
 
 class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
@@ -86,5 +87,12 @@ class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
         self.navigationItem.hidesBackButton = false
         self.navigationItem.setLeftBarButton(nil, animated: true)
         self.navigationItem.setRightBarButton(rightBarButton, animated: true)
+    }
+    
+    func diplayAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: AppConfiguration.Messages.okButton, style: .default, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

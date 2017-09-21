@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Moya
 
 class InsightsInteractor:BaseInteractor {
     
@@ -54,5 +53,9 @@ class InsightsInteractor:BaseInteractor {
         let mostCommentedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.one, "items": topMostCommented]
         let lastWeeksPostedDictionary: [String: Any] = ["sectionTitle":  AppConfiguration.TableViewSections.two, "items": lastWeeksPosted]
         self.presenter?.presentLoadedSections(with: [bestEngagementDictionary,mostCommentedDictionary,lastWeeksPostedDictionary])
+    }
+    
+    override func loadFetchMediaFailureAlert(error:Error) {
+        self.presenter?.presentAlertController(with: error.localizedDescription)
     }
 }

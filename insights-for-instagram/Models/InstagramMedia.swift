@@ -6,8 +6,8 @@
 //  Copyright © 2017 Alex Di Mango. All rights reserved.
 //
 
-import RealmSwift
 import ObjectMapper
+import RealmSwift
 import UIKit
 
 class InstagramMedia: Object,Mappable {

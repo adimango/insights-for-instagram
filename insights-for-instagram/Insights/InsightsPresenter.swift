@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct InstagramMediaSection {
     let sectionTitle: String
@@ -25,7 +26,7 @@ protocol InstagramMediaPresentation {
 }
 
 class InsightsPresenter: InstagramMediaPresentation {
-
+    
     // MARK: - Properties
     
     weak var viewController: InsightsViewDisplayLogic?
@@ -62,5 +63,11 @@ class InsightsPresenter: InstagramMediaPresentation {
         let instagramItemsSection_1 = InstagramMediaSection(sectionTitle: AppConfiguration.TableViewSections.one, instagramMediaViews: items)
         let instagramItemsSection_2 = InstagramMediaSection(sectionTitle: AppConfiguration.TableViewSections.two, instagramMediaViews: items)
         return [instagramItemsSection_0, instagramItemsSection_1, instagramItemsSection_2]
+    }
+    
+    // MARK: - Present Alert Controller
+    
+    func presentAlertController(with message: String) {
+        viewController?.diplayFetchMediaFailureAlert(title: AppConfiguration.Messages.somethingWrongMessage, message: message)
     }
 }

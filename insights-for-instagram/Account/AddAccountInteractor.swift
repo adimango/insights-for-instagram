@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Moya
 
 class AddAccountInteractor:BaseInteractor {
     
@@ -30,8 +29,7 @@ class AddAccountInteractor:BaseInteractor {
     }
     
     override func loadStoredMedia (){
-        self.presenter?.presentAddAccount()
-        AppHelper.showAlert(with: AppConfiguration.Messages.reportsCompletedTitle, message: AppConfiguration.Messages.goBackToInsightsMessage)
+        self.presenter?.presentReportsCompleted()
         NotificationCenter.default.post(name: AppConfiguration.DefaultsNotifications.reload, object: nil)
     }
     
@@ -78,8 +76,7 @@ class AddAccountInteractor:BaseInteractor {
     }
     
     private func stopLoading(with message:String){
-        self.presenter?.presentAddAccount()
-        AppHelper.showAlert(with: nil, message: message)
+        self.presenter?.presentAlertController(title: AppConfiguration.Messages.somethingWrongMessage, message: message)
     }
     
     private func downloadItems() {

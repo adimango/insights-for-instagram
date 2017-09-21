@@ -7,7 +7,6 @@
 //
 
 
-import UIKit
 import Moya
 
 struct FetchMediaRequest {
@@ -38,8 +37,7 @@ class BaseInteractor:InsightsWorkerMediaImporting {
                     self.loadStoredMedia()
                 }
             } catch {
-                self.loadStoredMedia()
-                AppHelper.showAlert(with: nil, message: error.localizedDescription)
+                self.loadFetchMediaFailureAlert(error: error)
             }
         }
     }
@@ -69,12 +67,16 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     func didFinishImporting(_ output: InsightsWorkerOutput?) {
         if (output?.moreAvailable)! && (output?.localCount)! < 1000 {
             guard let request = createFetchMediaRequest(offset: output?.offset) else {
-                self.loadEmptyMedia()
+                DispatchQueue.main.async {
+                    self.loadEmptyMedia()
+                }
                 return
             }
             performFetchMedia(request: request)
         } else {
-            self.loadStoredMedia()
+            DispatchQueue.main.async {
+                self.loadStoredMedia()
+            }
         }
     }
     
@@ -90,5 +92,9 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     
     func loadStoredMedia() {
         preconditionFailure("loadStoredMedia must be overridden")
+    }
+    
+    func loadFetchMediaFailureAlert(error:Error) {
+        preconditionFailure("loadFetchMediaFailureAlert must be overridden")
     }
 }
