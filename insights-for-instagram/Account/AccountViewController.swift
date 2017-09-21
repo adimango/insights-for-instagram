@@ -35,13 +35,13 @@ class AccountViewController: UITableViewController {
         if indexPath.row > 1 {
            let cell = tableView.cellForRow(at: indexPath)
            cell?.isSelected = false
-           deleteAllReportsTapped()
+           diplayDeleteAllReportsAlert()
         }
     }
     
     // MARK: - Actions
     
-    private func deleteAllReportsTapped(){
+    private func diplayDeleteAllReportsAlert(){
     
     let alertController = UIAlertController(title: AppConfiguration.Messages.deleteReportsTitle, message: AppConfiguration.Messages.deleteReportsMessage, preferredStyle: UIAlertControllerStyle.alert)
         
@@ -60,5 +60,4 @@ class AccountViewController: UITableViewController {
     self.present(alertController, animated: true, completion: nil)
     
     }
-    
 }
