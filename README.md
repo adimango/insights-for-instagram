@@ -38,12 +38,6 @@ If you have questions about any aspect of this project, please feel free to
 - [Realm][]: data layer written in Swift
 - [Quick][]: behavior-driven development framework for Swift
 
-## Updates
-
-### Dec 01, 2017: Breaking Changes
-
-The Instragram API media endpoints now returns to 404-pages. After more of 20k downloads in just few month, Instagram removed the public API. However, the advanced queries are still available and a workaround will be push soon!
-
 ### License
 
 MIT License. See [LICENSE](LICENSE).
@@ -51,4 +45,10 @@ MIT License. See [LICENSE](LICENSE).
 [Moya]:https://github.com/Moya/Moya
 [Realm]:https://realm.io/docs/swift/latest/
 [Quick]:https://github.com/Quick/Quick
+
+## Updates
+
+### Dec 01, 2017: Breaking Changes
+
+The Instragram API media endpoints now returns to 404-pages. After more of 20k downloads in just few month, Instagram removed the public API. However, the advanced queries are still available and a workaround will be push soon!
 
