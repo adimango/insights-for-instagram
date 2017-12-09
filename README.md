@@ -52,3 +52,12 @@ MIT License. See [LICENSE](LICENSE).
 
 The Instragram API media endpoints now returns to 404-pages. After more of 20k downloads in just few month, Instagram removed the public API. However, the advanced queries are still available and a workaround will be push soon!
 
+### Dec 09, 2017: Back on Track
+
+The app is using a new Instragram API proxy, developed using `/graphql/query` and some web API params.
+
+```
+https://insights-for-instagram.herokuapp.com/api/users/:user_name/media
+
+```
+
