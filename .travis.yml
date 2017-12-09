@@ -15,8 +15,10 @@ before_install:
 #  - brew update
 #  - brew install swiftlint || true
 
+before_install:
+  - gem install fastlane --no-ri --no-rdoc --no-document
 jobs:
   include:
     - stage: XCTest
       script:
-        - fastlane scan -s insights-for-instagram
+        - fastlane scan -scheme insights-for-instagram
