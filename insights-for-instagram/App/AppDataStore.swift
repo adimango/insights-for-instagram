@@ -56,7 +56,7 @@ class AppDataStore {
     }
     
     // Creates/updates media
-    class func importInstagramMedia(instagramMedia: [[String: Any]]) {
+    class func importInstagramMedia(instagramMedia: [[String: Any]], completion: @escaping () -> Void){
         DispatchQueue.global().async {
             let realm = try! Realm()
             realm.beginWrite()
@@ -65,6 +65,9 @@ class AppDataStore {
                 realm.add(instagramMedia!, update: true)
             }
             try! realm.commitWrite()
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     

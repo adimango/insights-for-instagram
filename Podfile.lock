@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - Kingfisher (3.13.1)
-  - Moya (9.0.0):
-    - Moya/Core (= 9.0.0)
-  - Moya/Core (9.0.0):
+  - Moya (10.0.1):
+    - Moya/Core (= 10.0.1)
+  - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Nimble (7.0.1)
-  - ObjectMapper (2.2.9)
-  - Quick (1.1.0)
-  - Realm (2.10.1):
-    - Realm/Headers (= 2.10.1)
-  - Realm/Headers (2.10.1)
-  - RealmSwift (2.10.1):
-    - Realm (= 2.10.1)
-  - Result (3.2.3)
+  - Nimble (7.0.3)
+  - ObjectMapper (3.1.0)
+  - Quick (1.2.0)
+  - Realm (3.0.2):
+    - Realm/Headers (= 3.0.2)
+  - Realm/Headers (3.0.2)
+  - RealmSwift (3.0.2):
+    - Realm (= 3.0.2)
+  - Result (3.2.4)
 
 DEPENDENCIES:
   - Kingfisher (~> 3.0)
@@ -25,15 +25,15 @@ DEPENDENCIES:
   - RealmSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
-  Moya: cf5e6ee93af526532f92614004b8ad2ea60fd845
-  Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
-  ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
-  Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
-  Realm: fc7a317a5c2c9ba91f5f235ede4e2ea76e9eba0c
-  RealmSwift: 505ed6c15942a2e76f5cfa78a8667cfa997ee75b
-  Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
+  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
 
 PODFILE CHECKSUM: 3a61d546b6d37bb85fd9b8e2dbd55bf07cd15b87
 

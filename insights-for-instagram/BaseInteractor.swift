@@ -26,16 +26,15 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     var accountName: String?
     
     func performFetchMedia (request: FetchMediaRequest) {
-        InstagramProvider.request(.userMedia(request.accountName!,request.offset)){ result in
+        InstagramProvider.request(.userMedia(request.accountName!)){ result in
             do {
                 let response = try result.dematerialize()
                 let value:[String: Any] = try response.mapNSArray()
-                let items = value["items"] as? [[String: Any]]
-                if (items?.count)! > 0 {
-                    self.initInsightsWorkerWithResponse(response: value as [String : AnyObject])
-                }else {
+                guard let media = value["response"] as? [[String: AnyObject]], media.count > 0 else {
                     self.loadStoredMedia()
+                    return
                 }
+                self.initInsightsWorkerWithResponse(response: media)
             } catch {
                 self.loadFetchMediaFailureAlert(error: error)
             }
@@ -53,31 +52,23 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     
     // MARK: - Create Worker
     
-    private func initInsightsWorkerWithResponse (response: [String: AnyObject]) {
+    private func initInsightsWorkerWithResponse (response: [[String: AnyObject]]) {
         self.worker = BaseInteractorWorker(response: response)
         let iteractor = self
-        self.worker?.iteractor = iteractor
+        worker?.iteractor = iteractor
         DispatchQueue.global(qos: .background).async {
-            try? self.worker?.importFromJsonDictionary()
+            self.worker?.importFromJsonDictionary()
         }
     }
     
     // MARK: - InsightsWorkerDelegate
     
     func didFinishImporting(_ output: InsightsWorkerOutput?) {
-        if (output?.moreAvailable)! && (output?.localCount)! < 1000 {
-            guard let request = createFetchMediaRequest(offset: output?.offset) else {
-                DispatchQueue.main.async {
-                    self.loadEmptyMedia()
-                }
-                return
-            }
-            performFetchMedia(request: request)
-        } else {
-            DispatchQueue.main.async {
-                self.loadStoredMedia()
-            }
+        guard let count = output?.localCount, count > 0 else {
+            loadEmptyMedia()
+            return
         }
+        loadStoredMedia()
     }
     
     // MARK: - Base interactor to be overriden actions

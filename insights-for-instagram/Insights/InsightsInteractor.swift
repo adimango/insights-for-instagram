@@ -29,11 +29,11 @@ class InsightsInteractor:BaseInteractor {
     
     @objc override func loadMedia() {
         guard let name = AppUserAccount().name else {
-            self.accountName = nil
-            self.loadEmptyMedia()
+            accountName = nil
+            loadEmptyMedia()
             return
         }
-        self.accountName = name
+        accountName = name
         loadStoredMedia()
         guard let request = createFetchMediaRequest(offset: nil) else {
             return
@@ -42,7 +42,7 @@ class InsightsInteractor:BaseInteractor {
     }
     
     override func loadEmptyMedia() {
-        self.presenter?.presentNoAccountSections()
+        presenter?.presentNoAccountSections()
     }
     
     override func loadStoredMedia() {
@@ -52,10 +52,10 @@ class InsightsInteractor:BaseInteractor {
         let bestEngagementDictionary: [String: Any] = ["sectionTitle":  AppConfiguration.TableViewSections.zero, "items": bestEngagement]
         let mostCommentedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.one, "items": topMostCommented]
         let lastWeeksPostedDictionary: [String: Any] = ["sectionTitle":  AppConfiguration.TableViewSections.two, "items": lastWeeksPosted]
-        self.presenter?.presentLoadedSections(with: [bestEngagementDictionary,mostCommentedDictionary,lastWeeksPostedDictionary])
+        presenter?.presentLoadedSections(with: [bestEngagementDictionary,mostCommentedDictionary,lastWeeksPostedDictionary])
     }
     
     override func loadFetchMediaFailureAlert(error:Error) {
-        self.presenter?.presentAlertController(with: error.localizedDescription)
+        presenter?.presentAlertController(with: error.localizedDescription)
     }
 }
