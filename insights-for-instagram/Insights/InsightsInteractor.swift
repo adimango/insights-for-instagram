@@ -38,7 +38,7 @@ class InsightsInteractor:BaseInteractor {
         guard let request = createFetchMediaRequest(offset: nil) else {
             return
         }
-       // performFetchMedia(request: request)
+        performFetchMedia(request: request)
     }
     
     override func loadEmptyMedia() {
