@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: insights-for-instagram.xcworkspace
+podfile: Podfile
+os: osx
