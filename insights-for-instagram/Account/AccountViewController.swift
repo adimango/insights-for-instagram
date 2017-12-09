@@ -19,14 +19,14 @@ class AccountViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.tableFooterView = UIView()
         guard let name = AppUserAccount().name else {
-            self.accountNameTableCell.textLabel?.text = NSLocalizedString("Account Name", comment: "")
+            accountNameTableCell.textLabel?.text = NSLocalizedString("Account Name", comment: "")
             return
         }
-        self.accountNameTableCell.textLabel?.text = name
+        accountNameTableCell.textLabel?.text = name
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.accountNameTableCell.isSelected = false
+        accountNameTableCell.isSelected = false
     }
     
     // MARK: - Table view data source
@@ -57,7 +57,7 @@ class AccountViewController: UITableViewController {
     
     alertController.addAction(cancelAction)
     alertController.addAction(deleteAllAction)
-    self.present(alertController, animated: true, completion: nil)
+    present(alertController, animated: true, completion: nil)
     
     }
 }

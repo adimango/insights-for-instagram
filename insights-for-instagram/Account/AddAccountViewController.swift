@@ -46,8 +46,8 @@ class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usernameTextfield.becomeFirstResponder()
-        self.interactor?.loadAccount()
+        usernameTextfield.becomeFirstResponder()
+        interactor?.loadAccount()
     }
     
     // MARK: - Actions
@@ -56,43 +56,43 @@ class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
         guard let username = usernameTextfield.text, !username.isEmpty else {
             return
         }
-        self.usernameTextfield.resignFirstResponder()
-        self.interactor?.validateAccount(with: username)
+        usernameTextfield.resignFirstResponder()
+        interactor?.validateAccount(with: username)
     }
     
     func cancelTapped(){
-        self.usernameTextfield.text = ""
-        self.interactor?.deleteAccount()
+        usernameTextfield.text = ""
+        interactor?.deleteAccount()
     }
     
     // MARK: - AddAccountDisplayLogic
     
     func diplayAddAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
-        self.usernameTextfield.isEnabled = true
-        self.navigationItem.hidesBackButton = false
-        self.navigationItem.setLeftBarButton(nil, animated: true)
-        self.navigationItem.setRightBarButton(rightBarButton, animated: true)
+        usernameTextfield.isEnabled = true
+        navigationItem.hidesBackButton = false
+        navigationItem.setLeftBarButton(nil, animated: true)
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
     func diplayLoadingAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
-        self.usernameTextfield.isEnabled = false
-        self.navigationItem.setLeftBarButton(leftBarButton, animated: true)
-        self.navigationItem.setRightBarButton(rightBarButton, animated: true)
+        usernameTextfield.isEnabled = false
+        navigationItem.setLeftBarButton(leftBarButton, animated: true)
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
     func diplayUpdateAccount(with accountName:String, leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
-        self.usernameTextfield.text = accountName
-        self.usernameTextfield.isEnabled = true
-        self.usernameTextfield.becomeFirstResponder()
-        self.navigationItem.hidesBackButton = false
-        self.navigationItem.setLeftBarButton(nil, animated: true)
-        self.navigationItem.setRightBarButton(rightBarButton, animated: true)
+        usernameTextfield.text = accountName
+        usernameTextfield.isEnabled = true
+        usernameTextfield.becomeFirstResponder()
+        navigationItem.hidesBackButton = false
+        navigationItem.setLeftBarButton(nil, animated: true)
+        navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
     func diplayAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: AppConfiguration.Messages.okButton, style: .default, handler: nil)
         alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }

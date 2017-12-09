@@ -18,10 +18,10 @@ class AddAccountInteractor:BaseInteractor {
     
     override func loadMedia() {
         guard let name = AppUserAccount().name else {
-            self.accountName = nil
+            accountName = nil
             return
         }
-        self.accountName = name
+        accountName = name
         guard let request = createFetchMediaRequest(offset: nil) else {
             return
         }
@@ -29,32 +29,29 @@ class AddAccountInteractor:BaseInteractor {
     }
     
     override func loadStoredMedia (){
-        self.presenter?.presentReportsCompleted()
+        presenter?.presentReportsCompleted()
         NotificationCenter.default.post(name: AppConfiguration.DefaultsNotifications.reload, object: nil)
     }
     
-    override func loadEmptyMedia() {
-        
-    }
+    override func loadEmptyMedia() {}
     
     // MARK: - Storing/updating account logic
     
     func validateAccount(with userName:String) {
-        self.presenter?.presentLoadingIndicator()
+        presenter?.presentLoadingIndicator()
         if AppUserAccount().name != userName { //remove old account data
             AppDataStore.deleteAll()
         }
-        InstagramProvider.request(.userMedia(userName,"")){ result in
+        InstagramProvider.request(.userMedia(userName)){ result in
             do {
                 let response = try result.dematerialize()
                 let value:[String: Any] = try response.mapNSArray()
-                let items = value["items"] as? [[String: Any]]
-                if (items?.count)! > 0 {
-                    AppUserAccount().name = userName
-                    self.downloadItems()
-                }else {
+                guard let items = value["response"] as? [[String: Any]], items.count > 0 else {
                     self.stopLoading(with: AppConfiguration.Messages.privateAccountMessage)
+                    return
                 }
+                AppUserAccount().name = userName
+                self.loadMedia()
             } catch {
                 self.stopLoading(with: error.localizedDescription)
             }
@@ -62,24 +59,22 @@ class AddAccountInteractor:BaseInteractor {
     }
     
     func loadAccount(){
-        if let name = AppUserAccount().name {
-            self.presenter?.presentUpdateAccount(account: name)
-        }else{
-            self.presenter?.presentAddAccount()
+        guard let name = AppUserAccount().name  else {
+            presenter?.presentAddAccount()
+            return
         }
+        presenter?.presentUpdateAccount(account: name)
     }
     
     func deleteAccount() {
-        self.accountName = nil
-        self.presenter?.presentAddAccount()
+        accountName = nil
+        presenter?.presentAddAccount()
         AppDataStore.deleteAll()
     }
     
     private func stopLoading(with message:String){
-        self.presenter?.presentAlertController(title: AppConfiguration.Messages.somethingWrongMessage, message: message)
+        presenter?.presentAlertController(title: AppConfiguration.Messages.somethingWrongMessage, message: message)
     }
     
-    private func downloadItems() {
-        self.loadMedia()
-    }
+
 }
