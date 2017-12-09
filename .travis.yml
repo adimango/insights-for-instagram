@@ -19,6 +19,10 @@ before_install:
   - gem install fastlane --no-ri --no-rdoc --no-document
 jobs:
   include:
-    - stage: XCTest
+    - stage: Build
       script:
-        - fastlane scan -s insights-for-instagram
+        - set -o pipefail
+        - xcodebuild -workspace insights-for-instagram.xcworkspace -scheme insights-for-instagram -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+#    - stage: XCTest
+#      script:
+#        - fastlane scan -scheme insights-for-instagram
