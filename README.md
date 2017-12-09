@@ -61,7 +61,8 @@ The Instragram API media endpoints now returns to 404-pages. After more of 20k d
 The app is using a new Instragram API proxy, developed using `/graphql/query` and some web API params.
 
 ```
-https://insights-for-instagram.herokuapp.com/api/users/:user_name/media
-
+// GET /api/users/:user_name/media -> returns media
+// Below an example with National Geographic
+https://insights-for-instagram.herokuapp.com/api/users/natgeo/media 
 ```
 
