@@ -1,5 +1,5 @@
 # Insights for Instagram
-A simple iOS Instagram's media insights App written in Swift 4.
+A simple iOS Instagram's media insights App.
 
 ![iOS](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/Swift-4-blue.svg)
