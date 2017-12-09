@@ -1,25 +1,21 @@
 language: objective-c
 os: osx
 osx_image: xcode9.2
-notifications:
-  email: false
-
 xcode_workspace: insights-for-instagram.xcworkspace
 podfile: Podfile
 cache: cocoapods
+notifications:
+  email: false
 
 before_install:
   - rvm install ruby --latest
   - gem install cocoapods
-  - gem install xcpretty -N
-  - gem install fastlane --no-ri --no-rdoc --no-document
   - pod repo update master
+  - gem install fastlane --no-ri --no-rdoc --no-document
 
 #  - brew update
 #  - brew install swiftlint || true
 
-before_install:
-  - gem install fastlane --no-ri --no-rdoc --no-document
 jobs:
   include:
     - stage: XCTest
