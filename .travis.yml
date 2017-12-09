@@ -21,4 +21,4 @@ jobs:
   include:
     - stage: XCTest
       script:
-        - fastlane scan -scheme insights-for-instagram
+        - fastlane scan -s insights-for-instagram
