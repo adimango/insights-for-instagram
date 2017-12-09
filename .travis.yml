@@ -1,15 +1,17 @@
 language: objective-c
 os: osx
 
+xcode_workspace: insights-for-instagram.xcworkspace
+podfile: Podfile
+cache: cocoapods
+
 before_install:
   - rvm install ruby --latest
   - gem install cocoapods
   - gem install xcpretty -N
+  - pod repo update master
   - brew update
   - brew install swiftlint || true
-
-xcode_workspace: insights-for-instagram.xcworkspace
-podfile: Podfile
 
 script:
   - set -o pipefail
