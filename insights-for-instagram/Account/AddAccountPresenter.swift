@@ -30,25 +30,25 @@ class AddAccountPresenter {
         activityIndicator.startAnimating()
         let leftBarButton = UIBarButtonItem(title: "Cancel", style: .plain, target: viewController, action: #selector(AddAccountViewController.cancelTapped))
         let rightBarButton = UIBarButtonItem(customView: activityIndicator)
-        self.viewController?.diplayLoadingAccount(with: leftBarButton, rightBarButton: rightBarButton)
+        viewController?.diplayLoadingAccount(with: leftBarButton, rightBarButton: rightBarButton)
     }
     
     func presentUpdateAccount(account:String) {
         let leftBarButton = UIBarButtonItem()
         leftBarButton.title = "Account"
         let rightBarButton = UIBarButtonItem(title: "Done", style: .plain, target: viewController, action: #selector(AddAccountViewController.doneTapped))
-        self.viewController?.diplayUpdateAccount(with: account, leftBarButton: leftBarButton, rightBarButton: rightBarButton)
+        viewController?.diplayUpdateAccount(with: account, leftBarButton: leftBarButton, rightBarButton: rightBarButton)
     }
     
     func presentReportsCompleted() {
-        self.presentAddAccount()
-        self.viewController?.diplayAlert(title: AppConfiguration.Messages.reportsCompletedTitle, message: AppConfiguration.Messages.reportsCompletedMessage)
+        presentAddAccount()
+        viewController?.diplayAlert(title: AppConfiguration.Messages.reportsCompletedTitle, message: AppConfiguration.Messages.reportsCompletedMessage)
     }
     
     // MARK: - Present Alert Controller
     
     func presentAlertController(title:String, message: String) {
-        self.presentAddAccount()
-        self.viewController?.diplayAlert(title: title, message: message)
+        presentAddAccount()
+        viewController?.diplayAlert(title: title, message: message)
     }
 }

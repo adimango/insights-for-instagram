@@ -20,7 +20,6 @@ class InstagramMedia: Object,Mappable {
     @objc dynamic var likesCount = 0
     @objc dynamic var commentsCount = 0
     @objc dynamic var engagementCount = 0 // includes the total number of Instagram accounts that liked or commented a post
-    @objc dynamic var type = ""
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -32,12 +31,11 @@ class InstagramMedia: Object,Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         code <- map["code"]
-        imageUrl <- map["images.standard_resolution.url"]
+        imageUrl <- map["image_url"]
         createdTime <- (map["created_time"], DateTransform())
         weekday = Calendar.current.component(.weekday, from: createdTime)
-        likesCount <- map["likes.count"]
-        commentsCount <- map["comments.count"]
-        engagementCount = likesCount + commentsCount
-        type <- map["type"]
+        likesCount <- map["likes_count"]
+        commentsCount <- map["comments_count"]
+        engagementCount <- map["engagement_count"]
     }
 }

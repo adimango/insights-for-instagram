@@ -38,7 +38,7 @@ class AppConfiguration {
         static let somethingWrongMessage = NSLocalizedString("Something went wrong", comment: "")
         static let privateAccountMessage = NSLocalizedString("This account is private", comment: "")
         static let reportsCompletedTitle = NSLocalizedString("Reports Completed", comment: "")
-        static let reportsCompletedMessage = NSLocalizedString("Please go back to the Insights screen.", comment: "")
+        static let reportsCompletedMessage = NSLocalizedString("Please go back to the Insights screen", comment: "")
         static let deleteReportsTitle = NSLocalizedString("Delete Reports", comment: "")
         static let deleteReportsMessage = NSLocalizedString("Remove my account and delete all the reports", comment: "")
     }

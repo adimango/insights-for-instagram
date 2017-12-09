@@ -11,6 +11,10 @@ import Moya
 
 // MARK: - Provider setup
 
+struct Constant {
+    static let baseURL = "https://insights-for-instagram.herokuapp.com/api/"
+}
+
 private func JSONResponseDataFormatter(_ data: Data) -> Data {
     do {
         let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -21,7 +25,7 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
     }
 }
 
-let InstagramProvider = MoyaProvider<Instagram>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+let InstagramProvider = MoyaProvider<Instagram>(plugins: [NetworkLoggerPlugin(verbose: false, responseDataFormatter: JSONResponseDataFormatter)])
 
 // MARK: - Provider support
 
@@ -32,50 +36,40 @@ private extension String {
 }
 
 public enum Instagram {
-    case userMedia(String,String?)
+    case userMedia(String)
 }
 
 extension Instagram: TargetType {
-    public var baseURL: URL { return URL(string: "https://www.instagram.com")! }
+    public var baseURL: URL { return URL(string:Constant.baseURL)! }
     public var path: String {
         switch self {
-        case .userMedia(let name, _):
-            return "/\(name.urlEscaped)/media"
+        case .userMedia(let name):
+            return "users/\(name.urlEscaped)/media"
         }
     }
     public var method: Moya.Method {
         return .get
     }
-    public var parameters: [String: Any]? {
-        switch self {
-        case .userMedia(_, let offset):
-            guard offset != nil else {
-                return nil
-            }
-            return ["max_id": offset ?? "0"]
-        }
-    }
+    
     public var parameterEncoding: ParameterEncoding {
         return URLEncoding.default
     }
+    
     public var task: Task {
-        switch self {
-        case .userMedia(_, let offset):
-            guard offset != nil else {
-                return .requestPlain
-            }
-            return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
-        }
+        return .requestPlain
     }
+    
     public var validate: Bool {
         switch self {
         default:
             return false
         }
     }
+   
     public var sampleData: Data {
         return Data()
     }
+    
     public var headers: [String: String]? {
         return nil
     }

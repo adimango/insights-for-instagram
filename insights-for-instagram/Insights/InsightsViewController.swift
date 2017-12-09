@@ -43,7 +43,6 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
        interactor.presenter = presenter
        presenter.viewController = viewController
        sections = []
-
     }
     
     // MARK: - View lifecycle
