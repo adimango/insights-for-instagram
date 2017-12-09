@@ -616,7 +616,7 @@
 			baseConfigurationReference = 25CF554A7A2BE8E283AEC682 /* Pods-insights-for-instagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 46BS3CW9YT;
 				INFOPLIST_FILE = "insights-for-instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -633,7 +633,7 @@
 			baseConfigurationReference = A7CD320FF647674A7285FBC0 /* Pods-insights-for-instagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 46BS3CW9YT;
 				INFOPLIST_FILE = "insights-for-instagram/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
