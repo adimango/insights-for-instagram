@@ -21,7 +21,7 @@ class InstagramAPITests: QuickSpec {
         }
         it("returns stubbed data for user media request") {
             var json: String?
-            let target: Instagram = .userMedia("","")
+            let target: Instagram = .userMedia("")
             provider.request(target) { result in
                 if case let .success(response) = result {
                     json = String(data: response.data, encoding: .utf8)
