@@ -4,6 +4,7 @@ A simple iOS Instagram's media insights App written in Swift 4.
 ![iOS](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/Swift-4-blue.svg)
 [![Build Status](https://travis-ci.org/adimango/insights-for-instagram.svg?branch=master)](https://travis-ci.org/adimango/insights-for-instagram)
+
 ![](screenshots/app-github-header.png)
 
 ### Quick Start
