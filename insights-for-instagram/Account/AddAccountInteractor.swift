@@ -46,7 +46,7 @@ class AddAccountInteractor:BaseInteractor {
             do {
                 let response = try result.dematerialize()
                 let value:[String: Any] = try response.mapNSArray()
-                guard let items = value["response"] as? [[String: Any]], items.count > 0 else {
+                guard let items = value["data"] as? [[String: Any]], items.count > 0 else {
                     self.stopLoading(with: AppConfiguration.Messages.privateAccountMessage)
                     return
                 }

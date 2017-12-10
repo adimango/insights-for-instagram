@@ -14,6 +14,7 @@ class InstagramMedia: Object,Mappable {
     
     @objc dynamic var id = ""
     @objc dynamic var code = ""
+    @objc dynamic var type = ""
     @objc dynamic var imageUrl = ""
     @objc dynamic var createdTime = Date()
     @objc dynamic var weekday = 0 // https://developer.apple.com/documentation/foundation/nsdatecomponents/1410442-weekday

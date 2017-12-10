@@ -30,7 +30,7 @@ class BaseInteractor:InsightsWorkerMediaImporting {
             do {
                 let response = try result.dematerialize()
                 let value:[String: Any] = try response.mapNSArray()
-                guard let media = value["response"] as? [[String: AnyObject]], media.count > 0 else {
+                guard let media = value["data"] as? [[String: AnyObject]], media.count > 0 else {
                     self.loadStoredMedia()
                     return
                 }
