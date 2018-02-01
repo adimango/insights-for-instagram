@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddAccountInteractor:BaseInteractor {
+class AddAccountInteractor: BaseInteractor {
     
     // MARK: - Properties    
     
@@ -28,7 +28,7 @@ class AddAccountInteractor:BaseInteractor {
         performFetchMedia(request: request)
     }
     
-    override func loadStoredMedia (){
+    override func loadStoredMedia () {
         presenter?.presentReportsCompleted()
         NotificationCenter.default.post(name: AppConfiguration.DefaultsNotifications.reload, object: nil)
     }
@@ -37,16 +37,16 @@ class AddAccountInteractor:BaseInteractor {
     
     // MARK: - Storing/updating account logic
     
-    func validateAccount(with userName:String) {
+    func validateAccount(with userName: String) {
         presenter?.presentLoadingIndicator()
         if AppUserAccount().name != userName { //remove old account data
             AppDataStore.deleteAll()
         }
-        InstagramProvider.request(.userMedia(userName)){ result in
+        InstagramProvider.request(.userMedia(userName)) { result in
             do {
                 let response = try result.dematerialize()
-                let value:[String: Any] = try response.mapNSArray()
-                guard let items = value["data"] as? [[String: Any]], items.count > 0 else {
+                let value: [String: Any] = try response.mapNSArray()
+                guard let items = value["data"] as? [[String: Any]], items.isEmpty == false else {
                     self.stopLoading(with: AppConfiguration.Messages.privateAccountMessage)
                     return
                 }
@@ -58,7 +58,7 @@ class AddAccountInteractor:BaseInteractor {
         }
     }
     
-    func loadAccount(){
+    func loadAccount() {
         guard let name = AppUserAccount().name  else {
             presenter?.presentAddAccount()
             return
@@ -72,9 +72,7 @@ class AddAccountInteractor:BaseInteractor {
         AppDataStore.deleteAll()
     }
     
-    private func stopLoading(with message:String){
+    private func stopLoading(with message: String) {
         presenter?.presentAlertController(title: AppConfiguration.Messages.somethingWrongMessage, message: message)
     }
-    
-
 }

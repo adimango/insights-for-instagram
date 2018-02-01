@@ -37,7 +37,7 @@ class InstagramMediaSectionTableViewCell: UITableViewCell {
     
     let sectionNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightHeavy)
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.heavy)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -49,7 +49,7 @@ class InstagramMediaSectionTableViewCell: UITableViewCell {
         return view
     }()
     
-    func setupView(){
+    func setupView() {
         contentView.backgroundColor = UIColor.clear
         addSubview(itemsCollectionView)
         addSubview(dividerLineView)
@@ -74,7 +74,7 @@ extension InstagramMediaSectionTableViewCell {
         itemsCollectionView.delegate = dataSourceDelegate
         itemsCollectionView.dataSource = dataSourceDelegate
         itemsCollectionView.tag = row
-        itemsCollectionView.setContentOffset(itemsCollectionView.contentOffset, animated:false)
+        itemsCollectionView.setContentOffset(itemsCollectionView.contentOffset, animated: false)
         itemsCollectionView.reloadData()
     }
     
@@ -112,13 +112,13 @@ class InstagramMediaCollectionViewCell: UICollectionViewCell {
     
     let likesLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightRegular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         return label
     }()
     
     let commentsLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightRegular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         label.textColor = UIColor.lightGray
         return label
     }()

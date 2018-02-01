@@ -10,7 +10,7 @@ import Foundation
 
 class AppUserAccount {
     enum DefaultsKeys: String {
-        case UserAccountKey = "UserAccountKey"
+        case UserAccountKey
     }
     
     // MARK: - Initializers

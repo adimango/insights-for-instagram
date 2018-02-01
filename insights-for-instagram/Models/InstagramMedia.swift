@@ -10,7 +10,7 @@ import ObjectMapper
 import RealmSwift
 import UIKit
 
-class InstagramMedia: Object,Mappable {
+class InstagramMedia: Object, Mappable {
     
     @objc dynamic var id = ""
     @objc dynamic var code = ""

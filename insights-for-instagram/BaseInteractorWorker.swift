@@ -24,7 +24,7 @@ class BaseInteractorWorker {
     // MARK: - Properties
     
     weak var iteractor: InsightsWorkerMediaImporting?
-    var response:  [[String: AnyObject]]
+    var response: [[String: AnyObject]]
     
     // MARK: Object lifecycle
 
@@ -33,13 +33,13 @@ class BaseInteractorWorker {
     }
     
     //Map and store instagramMedia using Mappable and Realm
-    func importFromJsonDictionary(){
+    func importFromJsonDictionary() {
         AppDataStore.importInstagramMedia(instagramMedia: response) {
             self.prepareWorkerOutput()
         }
     }
     
-    private func prepareWorkerOutput(){
+    private func prepareWorkerOutput() {
         let itemIndex = AppDataStore.getInstagramMediaIndex()
         let output = InsightsWorkerOutput(status: nil, localCount: itemIndex.count)
         iteractor?.didFinishImporting(output)

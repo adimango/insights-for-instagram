@@ -23,7 +23,7 @@ class InstagramMediaTests: QuickSpec {
             let likesCount = 4
             let commentsCount = 3
             let engagementCount = 7
-            let json = ["id": id, "code": code, "image_url": imageUrl, "created_time": createdTime, "likes_count": likesCount, "comments_count": commentsCount, "engagement_count": engagementCount] as [String : Any]
+            let json = ["id": id, "code": code, "image_url": imageUrl, "created_time": createdTime, "likes_count": likesCount, "comments_count": commentsCount, "engagement_count": engagementCount] as [String: Any]
             let media = InstagramMedia(JSON: json)
             expect(media?.id) == id
             expect(media?.code) == code

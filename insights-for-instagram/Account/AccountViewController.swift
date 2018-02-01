@@ -41,18 +41,16 @@ class AccountViewController: UITableViewController {
     
     // MARK: - Actions
     
-    private func diplayDeleteAllReportsAlert(){
+    private func diplayDeleteAllReportsAlert() {
     
     let alertController = UIAlertController(title: AppConfiguration.Messages.deleteReportsTitle, message: AppConfiguration.Messages.deleteReportsMessage, preferredStyle: UIAlertControllerStyle.alert)
         
-    let deleteAllAction = UIAlertAction(title: AppConfiguration.Messages.deleteAllButton, style: UIAlertActionStyle.destructive) {
-        (result : UIAlertAction) -> Void in
+    let deleteAllAction = UIAlertAction(title: AppConfiguration.Messages.deleteAllButton, style: UIAlertActionStyle.destructive) { (_: UIAlertAction) -> Void in
         self.accountNameTableCell.textLabel?.text = NSLocalizedString("Account Name", comment: "")
         AppDataStore.deleteAll()
     }
         
-    let cancelAction = UIAlertAction(title: AppConfiguration.Messages.cancelButton, style: UIAlertActionStyle.default) {
-        (result : UIAlertAction) -> Void in
+    let cancelAction = UIAlertAction(title: AppConfiguration.Messages.cancelButton, style: UIAlertActionStyle.default) { (_: UIAlertAction) -> Void in
     }
     
     alertController.addAction(cancelAction)

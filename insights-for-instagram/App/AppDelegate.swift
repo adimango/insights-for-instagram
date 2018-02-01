@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    //MARK: - Setup UIAppearance
+    // MARK: Setup UIAppearance
     
     private func setupAppearance() {
         UINavigationBar.appearance().shadowImage = UIImage()
@@ -28,4 +28,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = UIColor.init(red: 233/255, green: 79/255, blue: 97/255, alpha: 1)
     }
 }
-

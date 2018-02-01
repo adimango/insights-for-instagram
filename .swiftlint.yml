@@ -1,0 +1,15 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+  - type_name
+  - identifier_name
+
+opt_in_rules:
+  - empty_count
+  - force_unwrapping
+
+excluded:
+  - Pods
+
+function_body_length:
+  warning: 50

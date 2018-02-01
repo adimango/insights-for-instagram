@@ -21,8 +21,9 @@ struct InstagramMediaView {
 }
 
 protocol InstagramMediaPresentation {
-    func presentLoadedSections (with items:[[String: Any]])
+    func presentLoadedSections (with items: [[String: Any]])
     func presentNoAccountSections ()
+    func presentAlertController(with message: String)
 }
 
 class InsightsPresenter: InstagramMediaPresentation {
@@ -33,11 +34,11 @@ class InsightsPresenter: InstagramMediaPresentation {
     
     // MARK: - Present fetched media
     
-    func presentLoadedSections(with items:[[String: Any]]) {
+    func presentLoadedSections(with items: [[String: Any]]) {
         var instagramMediaSections = [InstagramMediaSection]()
         for section in items {
-            let sectionTitle = section["sectionTitle"] as! String
-            let instagramMedias = section["items"] as! [InstagramMedia]
+            guard let sectionTitle = section["sectionTitle"] as? String,
+            let instagramMedias = section["items"] as? [InstagramMedia] else { return }
             var instagramMediaViews = [InstagramMediaView]()
             for item in instagramMedias {
                 let itemView = InstagramMediaView(likes: NSLocalizedString("Likes: ", comment: "")+"\(item.likesCount.formattedWithPoint)", comments: NSLocalizedString("Comments: ", comment: "")+"\(item.commentsCount.formattedWithPoint)", imageURL: item.imageUrl)
@@ -46,7 +47,7 @@ class InsightsPresenter: InstagramMediaPresentation {
             let instagramMediaSection = InstagramMediaSection(sectionTitle: sectionTitle, instagramMediaViews: instagramMediaViews)
             instagramMediaSections.append(instagramMediaSection)
         }
-        viewController?.diplayFetchedMedia(instagramMediaSections:instagramMediaSections)
+        viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections)
     }
     
     // MARK: - Present no account UI
@@ -56,7 +57,7 @@ class InsightsPresenter: InstagramMediaPresentation {
         viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections)
     }
     
-    private func createPlaceHolderSection() ->  [InstagramMediaSection] {
+    private func createPlaceHolderSection() -> [InstagramMediaSection] {
         let item = InstagramMediaView(likes: NSLocalizedString("Likes", comment: ""), comments: NSLocalizedString("Comments", comment: ""), imageURL: "")
         let items = Array(repeating: item, count: 3)
         let instagramItemsSection_0 = InstagramMediaSection(sectionTitle: AppConfiguration.TableViewSections.zero, instagramMediaViews: items)

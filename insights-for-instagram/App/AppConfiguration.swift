@@ -25,7 +25,7 @@ class AppConfiguration {
     }
     
     struct DefaultsNotifications {
-        static let reload = Notification.Name(rawValue:"reload")
+        static let reload = Notification.Name(rawValue: "reload")
     }
     
     // MARK: - AppConfiguration.Messages

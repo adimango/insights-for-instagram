@@ -21,7 +21,7 @@ extension Formatter {
 
 // MARK: - Integer
 
-extension Integer {
+extension BinaryInteger {
     var formattedWithPoint: String {
         return Formatter.withPoint.string(for: self) ?? ""
     }

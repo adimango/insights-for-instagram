@@ -30,8 +30,8 @@ let InstagramProvider = MoyaProvider<Instagram>(plugins: [NetworkLoggerPlugin(ve
 // MARK: - Provider support
 
 private extension String {
-    var urlEscaped: String {
-        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+    var urlEscaped: String? {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
     }
 }
 
@@ -40,11 +40,12 @@ public enum Instagram {
 }
 
 extension Instagram: TargetType {
-    public var baseURL: URL { return URL(string:Constant.baseURL)! }
+    public var baseURL: URL { return URL(string: Constant.baseURL)! } // swiftlint:disable:this force_unwrapping
     public var path: String {
         switch self {
         case .userMedia(let name):
-            return "users/\(name.urlEscaped)/media"
+            guard let name = name.urlEscaped else { return "" }
+            return "users/\(name)/media"
         }
     }
     public var method: Moya.Method {
@@ -79,12 +80,12 @@ public func url(_ route: TargetType) -> String {
     return route.baseURL.appendingPathComponent(route.path).absoluteString
 }
 
-//MARK: - Response Handlers
+// MARK: - Response Handlers
 
 extension Moya.Response {
-    func mapNSArray() throws -> Dictionary<String, AnyObject> {
+    func mapNSArray() throws -> [String: Any] {
         let any = try self.mapJSON()
-        guard let array = any as? Dictionary<String, AnyObject> else {
+        guard let array = any as? [String: Any] else {
             throw MoyaError.jsonMapping(self)
         }
         return array
@@ -93,10 +94,9 @@ extension Moya.Response {
 
 // MARK: - Provider support
 
-func stubbedResponse(_ filename: String) -> Data! {
+func stubbedResponse(_ filename: String) -> Data? {
     @objc class TestClass: NSObject { }
-    
     let bundle = Bundle(for: TestClass.self)
-    let path = bundle.path(forResource: filename, ofType: "json")
-    return (try? Data(contentsOf: URL(fileURLWithPath: path!)))
+    guard let path = bundle.path(forResource: filename, ofType: "json") else { return nil }
+    return (try? Data(contentsOf: URL(fileURLWithPath: path)))
 }

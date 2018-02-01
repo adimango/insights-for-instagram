@@ -4,14 +4,14 @@
 target 'insights-for-instagram' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  inhibit_all_warnings!
 
   # Pods for insights-for-instagram
   pod 'Moya'
   pod 'RealmSwift'
   pod 'ObjectMapper'
   pod 'Kingfisher', '~> 3.0'
-
-  inhibit_all_warnings!
+  pod 'SwiftLint'
 
   target 'insights-for-instagramTests' do
     inherit! :search_paths

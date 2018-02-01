@@ -6,7 +6,6 @@
 //  Copyright © 2017 Alex Di Mango. All rights reserved.
 //
 
-
 import Moya
 
 struct FetchMediaRequest {
@@ -18,7 +17,7 @@ protocol InsightsWorkerMediaImporting: class {
     func didFinishImporting(_ output: InsightsWorkerOutput?)
 }
 
-class BaseInteractor:InsightsWorkerMediaImporting {
+class BaseInteractor: InsightsWorkerMediaImporting {
     
     // MARK: - Properties
     
@@ -26,11 +25,12 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     var accountName: String?
     
     func performFetchMedia (request: FetchMediaRequest) {
-        InstagramProvider.request(.userMedia(request.accountName!)){ result in
+        guard let accountName = request.accountName else { return }
+        InstagramProvider.request(.userMedia(accountName)) { result in
             do {
                 let response = try result.dematerialize()
-                let value:[String: Any] = try response.mapNSArray()
-                guard let media = value["data"] as? [[String: AnyObject]], media.count > 0 else {
+                let value: [String: Any] = try response.mapNSArray()
+                guard let media = value["data"] as? [[String: AnyObject]], media.isEmpty == false else {
                     self.loadStoredMedia()
                     return
                 }
@@ -43,7 +43,7 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     
     // MARK: - Create Fetch Items Request
     
-    func createFetchMediaRequest(offset:String?) -> FetchMediaRequest? {
+    func createFetchMediaRequest(offset: String?) -> FetchMediaRequest? {
         guard self.accountName != nil else {
             return nil
         }
@@ -64,7 +64,7 @@ class BaseInteractor:InsightsWorkerMediaImporting {
     // MARK: - InsightsWorkerDelegate
     
     func didFinishImporting(_ output: InsightsWorkerOutput?) {
-        guard let count = output?.localCount, count > 0 else {
+        guard let localCount = output?.localCount, localCount > 0 else {
             loadEmptyMedia()
             return
         }
@@ -85,7 +85,7 @@ class BaseInteractor:InsightsWorkerMediaImporting {
         preconditionFailure("loadStoredMedia must be overridden")
     }
     
-    func loadFetchMediaFailureAlert(error:Error) {
+    func loadFetchMediaFailureAlert(error: Error) {
         preconditionFailure("loadFetchMediaFailureAlert must be overridden")
     }
 }

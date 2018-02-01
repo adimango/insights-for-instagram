@@ -9,9 +9,9 @@
 import UIKit
 
 protocol AddAccountDisplayLogic: class {
-    func diplayAddAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
-    func diplayLoadingAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
-    func diplayUpdateAccount(with accountName:String, leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem)
+    func diplayAddAccount(with leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem)
+    func diplayLoadingAccount(with leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem)
+    func diplayUpdateAccount(with accountName: String, leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem)
     func diplayAlert(title: String, message: String)
 }
 
@@ -52,7 +52,7 @@ class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
     
     // MARK: - Actions
     
-    func doneTapped(){
+    @objc func doneTapped() {
         guard let username = usernameTextfield.text, !username.isEmpty else {
             return
         }
@@ -60,27 +60,27 @@ class AddAccountViewController: UIViewController, AddAccountDisplayLogic {
         interactor?.validateAccount(with: username)
     }
     
-    func cancelTapped(){
+     @objc func cancelTapped() {
         usernameTextfield.text = ""
         interactor?.deleteAccount()
     }
     
     // MARK: - AddAccountDisplayLogic
     
-    func diplayAddAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
+    func diplayAddAccount(with leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem) {
         usernameTextfield.isEnabled = true
         navigationItem.hidesBackButton = false
         navigationItem.setLeftBarButton(nil, animated: true)
         navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
-    func diplayLoadingAccount(with leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
+    func diplayLoadingAccount(with leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem) {
         usernameTextfield.isEnabled = false
         navigationItem.setLeftBarButton(leftBarButton, animated: true)
         navigationItem.setRightBarButton(rightBarButton, animated: true)
     }
     
-    func diplayUpdateAccount(with accountName:String, leftBarButton:UIBarButtonItem, rightBarButton: UIBarButtonItem){
+    func diplayUpdateAccount(with accountName: String, leftBarButton: UIBarButtonItem, rightBarButton: UIBarButtonItem) {
         usernameTextfield.text = accountName
         usernameTextfield.isEnabled = true
         usernameTextfield.becomeFirstResponder()

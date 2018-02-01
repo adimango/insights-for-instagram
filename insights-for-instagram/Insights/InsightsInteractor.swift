@@ -8,11 +8,11 @@
 
 import UIKit
 
-class InsightsInteractor:BaseInteractor {
+class InsightsInteractor: BaseInteractor {
     
     // MARK: - Properties
     
-    var presenter: InsightsPresenter?
+    var presenter: InstagramMediaPresentation?
     
     // MARK: Object lifecycle
     
@@ -21,7 +21,7 @@ class InsightsInteractor:BaseInteractor {
         NotificationCenter.default.addObserver(self, selector: #selector(InsightsInteractor.loadMedia), name: AppConfiguration.DefaultsNotifications.reload, object: nil)
     }
     
-    deinit{
+    deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
@@ -49,13 +49,13 @@ class InsightsInteractor:BaseInteractor {
         let bestEngagement = AppDataStore.getBestEngagement(with: 25)
         let lastWeeksPosted = AppDataStore.getLastWeeksPosted(weeks: 12)
         let topMostCommented = AppDataStore.getMostLiked(with: 25)
-        let bestEngagementDictionary: [String: Any] = ["sectionTitle":  AppConfiguration.TableViewSections.zero, "items": bestEngagement]
+        let bestEngagementDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.zero, "items": bestEngagement]
         let mostCommentedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.one, "items": topMostCommented]
-        let lastWeeksPostedDictionary: [String: Any] = ["sectionTitle":  AppConfiguration.TableViewSections.two, "items": lastWeeksPosted]
-        presenter?.presentLoadedSections(with: [bestEngagementDictionary,mostCommentedDictionary,lastWeeksPostedDictionary])
+        let lastWeeksPostedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.two, "items": lastWeeksPosted]
+        presenter?.presentLoadedSections(with: [bestEngagementDictionary, mostCommentedDictionary, lastWeeksPostedDictionary])
     }
     
-    override func loadFetchMediaFailureAlert(error:Error) {
+    override func loadFetchMediaFailureAlert(error: Error) {
         presenter?.presentAlertController(with: error.localizedDescription)
     }
 }

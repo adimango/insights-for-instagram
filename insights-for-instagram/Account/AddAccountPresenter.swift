@@ -33,7 +33,7 @@ class AddAccountPresenter {
         viewController?.diplayLoadingAccount(with: leftBarButton, rightBarButton: rightBarButton)
     }
     
-    func presentUpdateAccount(account:String) {
+    func presentUpdateAccount(account: String) {
         let leftBarButton = UIBarButtonItem()
         leftBarButton.title = "Account"
         let rightBarButton = UIBarButtonItem(title: "Done", style: .plain, target: viewController, action: #selector(AddAccountViewController.doneTapped))
@@ -47,7 +47,7 @@ class AddAccountPresenter {
     
     // MARK: - Present Alert Controller
     
-    func presentAlertController(title:String, message: String) {
+    func presentAlertController(title: String, message: String) {
         presentAddAccount()
         viewController?.diplayAlert(title: title, message: message)
     }

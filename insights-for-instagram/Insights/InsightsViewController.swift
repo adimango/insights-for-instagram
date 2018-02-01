@@ -19,7 +19,7 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
     // MARK: - Properties
     
     var interactor: InsightsInteractor?
-    var presenter: InsightsPresenter?
+    var presenter: InstagramMediaPresentation?
     var sections: [InstagramMediaSection]?
     var storedOffsets = [Int: CGFloat]()
 
@@ -53,10 +53,10 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
         fetchMediaOnload()
     }
     
-    //MARK: - SetupUI
+    // MARK: - SetupUI
     
     private func setupUI() {
-        tableView.register(InstagramMediaSectionTableViewCell.self, forCellReuseIdentifier:AppConfiguration.TableViewCellIdentifiers.cell)
+        tableView.register(InstagramMediaSectionTableViewCell.self, forCellReuseIdentifier: AppConfiguration.TableViewCellIdentifiers.cell)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .none
@@ -64,7 +64,7 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
     
     // MARK: - Fetch Media
     
-    func fetchMediaOnload(){
+    func fetchMediaOnload() {
         DispatchQueue.global(qos: .background).async {
             self.interactor?.loadMedia()
         }
@@ -77,15 +77,18 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections!.count
+        guard let sections = sections else { return 0 }
+        return sections.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AppConfiguration.TableViewCellIdentifiers.cell, for: indexPath) as! InstagramMediaSectionTableViewCell
-        let instagramItemsSection = self.sections![indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AppConfiguration.TableViewCellIdentifiers.cell, for: indexPath) as? InstagramMediaSectionTableViewCell else {
+            return InstagramMediaSectionTableViewCell()
+        }
+        let instagramItemsSection = self.sections?[indexPath.row]
         cell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
         cell.collectionViewOffset = storedOffsets[indexPath.row] ?? 0
-        cell.sectionNameLabel.text = instagramItemsSection.sectionTitle
+        cell.sectionNameLabel.text = instagramItemsSection?.sectionTitle
         return cell
     }
     
@@ -128,19 +131,20 @@ extension InsightsViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let index = collectionView.tag
-        let instagramMediaSection = self.sections![index]
-        return instagramMediaSection.instagramMediaViews.count
+        let instagramMediaSection = self.sections?[index]
+        return (instagramMediaSection?.instagramMediaViews.count) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let index = collectionView.tag
-        let instagramMediaSection = self.sections![index]
-        let media = instagramMediaSection.instagramMediaViews[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConfiguration.TableViewCellIdentifiers.cell, for: indexPath) as! InstagramMediaCollectionViewCell
-        cell.likesLabel.text = media.likes
-        cell.commentsLabel.text = media.comments
-        if let url = URL(string: media.imageURL) {
-        cell.imageView.kf.setImage(with: url)
+        let instagramMediaSection = self.sections?[index]
+        let media = instagramMediaSection?.instagramMediaViews[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConfiguration.TableViewCellIdentifiers.cell, for: indexPath) as?
+            InstagramMediaCollectionViewCell else { return InstagramMediaCollectionViewCell() }
+        cell.likesLabel.text = media?.likes
+        cell.commentsLabel.text = media?.comments
+        if let imageUrl = media?.imageURL, let url = URL(string: imageUrl) {
+            cell.imageView.kf.setImage(with: url)
         }
         return cell
     }
@@ -149,4 +153,3 @@ extension InsightsViewController: UICollectionViewDelegate, UICollectionViewData
         return CGSize(width: 324/2, height: h)
     }
 }
-
