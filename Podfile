@@ -10,7 +10,7 @@ target 'insights-for-instagram' do
   pod 'Moya'
   pod 'RealmSwift'
   pod 'ObjectMapper'
-  pod 'Kingfisher', '~> 3.0'
+  pod 'Kingfisher', '~> 4.0'
   pod 'SwiftLint'
 
   target 'insights-for-instagramTests' do
