@@ -1,11 +1,3 @@
-//
-//  MainAccountViewController
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import UIKit
 
 class AccountViewController: UITableViewController {
@@ -47,7 +39,7 @@ class AccountViewController: UITableViewController {
         
     let deleteAllAction = UIAlertAction(title: AppConfiguration.Messages.deleteAllButton, style: UIAlertActionStyle.destructive) { (_: UIAlertAction) -> Void in
         self.accountNameTableCell.textLabel?.text = NSLocalizedString("Account Name", comment: "")
-        AppDataStore.deleteAll()
+        DataService.deleteAll()
     }
         
     let cancelAction = UIAlertAction(title: AppConfiguration.Messages.cancelButton, style: UIAlertActionStyle.default) { (_: UIAlertAction) -> Void in

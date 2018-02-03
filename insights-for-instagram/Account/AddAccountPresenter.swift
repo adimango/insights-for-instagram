@@ -1,11 +1,3 @@
-//
-//  AddAccountPresenter.swift
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import Foundation
 import UIKit
 

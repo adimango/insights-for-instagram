@@ -11,7 +11,6 @@
 		970EC5CA084F08EC732835A5 /* Pods_insights_for_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 802F0FF4317368326E258C85 /* Pods_insights_for_instagram.framework */; };
 		AD4142E31F6FD78E00A83795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */; };
 		AD4142E41F6FD78E00A83795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */; };
-		AD42A34E1F6ACC650023151C /* BaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD42A34D1F6ACC650023151C /* BaseInteractor.swift */; };
 		AD61BABD1F6BDBF900307E92 /* AddAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD61BABC1F6BDBF900307E92 /* AddAccountPresenter.swift */; };
 		AD6C69081F390A4E00039B66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD6C69061F390A4E00039B66 /* Main.storyboard */; };
 		AD6C690A1F390A4E00039B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD6C69091F390A4E00039B66 /* Assets.xcassets */; };
@@ -24,14 +23,13 @@
 		ADD71BE01F6AE49B00251445 /* InsightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD81F6AE49B00251445 /* InsightsViewController.swift */; };
 		ADD71BE31F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BD91F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift */; };
 		ADD71BEC1F6AE4AC00251445 /* AppUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE61F6AE4AC00251445 /* AppUserAccount.swift */; };
-		ADD71BF21F6AE4AC00251445 /* AppDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE81F6AE4AC00251445 /* AppDataStore.swift */; };
+		ADD71BF21F6AE4AC00251445 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE81F6AE4AC00251445 /* DataService.swift */; };
 		ADD71BF51F6AE4AC00251445 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BE91F6AE4AC00251445 /* AppConfiguration.swift */; };
 		ADD71BF81F6AE4AC00251445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEA1F6AE4AC00251445 /* AppDelegate.swift */; };
 		ADD71BFB1F6AE4AC00251445 /* AppExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BEB1F6AE4AC00251445 /* AppExtensions.swift */; };
 		ADD71C021F6AE4C100251445 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71BFE1F6AE4C100251445 /* AccountViewController.swift */; };
 		ADD71C081F6AE4C100251445 /* AddAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C001F6AE4C100251445 /* AddAccountViewController.swift */; };
 		ADD71C0B1F6AE4C100251445 /* AddAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD71C011F6AE4C100251445 /* AddAccountInteractor.swift */; };
-		ADE65DA11F59921A00F5B710 /* BaseInteractorWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE65DA01F59921A00F5B710 /* BaseInteractorWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +50,6 @@
 		802F0FF4317368326E258C85 /* Pods_insights_for_instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_insights_for_instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7CD320FF647674A7285FBC0 /* Pods-insights-for-instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-insights-for-instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-insights-for-instagram/Pods-insights-for-instagram.release.xcconfig"; sourceTree = "<group>"; };
 		AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AD42A34D1F6ACC650023151C /* BaseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractor.swift; sourceTree = "<group>"; };
 		AD61BABC1F6BDBF900307E92 /* AddAccountPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountPresenter.swift; sourceTree = "<group>"; };
 		AD6C68FD1F390A4E00039B66 /* insights-for-instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "insights-for-instagram.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD6C69071F390A4E00039B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,14 +66,13 @@
 		ADD71BD81F6AE49B00251445 /* InsightsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightsViewController.swift; sourceTree = "<group>"; };
 		ADD71BD91F6AE49B00251445 /* InstagramMediaSectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstagramMediaSectionTableViewCell.swift; sourceTree = "<group>"; };
 		ADD71BE61F6AE4AC00251445 /* AppUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUserAccount.swift; sourceTree = "<group>"; };
-		ADD71BE81F6AE4AC00251445 /* AppDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataStore.swift; sourceTree = "<group>"; };
+		ADD71BE81F6AE4AC00251445 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		ADD71BE91F6AE4AC00251445 /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		ADD71BEA1F6AE4AC00251445 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADD71BEB1F6AE4AC00251445 /* AppExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppExtensions.swift; sourceTree = "<group>"; };
 		ADD71BFE1F6AE4C100251445 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		ADD71C001F6AE4C100251445 /* AddAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountViewController.swift; sourceTree = "<group>"; };
 		ADD71C011F6AE4C100251445 /* AddAccountInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountInteractor.swift; sourceTree = "<group>"; };
-		ADE65DA01F59921A00F5B710 /* BaseInteractorWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInteractorWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +123,8 @@
 				ADD71B8B1F6AE36F00251445 /* Insights */,
 				ADD71B8C1F6AE37C00251445 /* Models */,
 				ADD71B8D1F6AE38500251445 /* Networking */,
+				ADC34C192025FAD5008E7875 /* Services */,
 				AD6C69091F390A4E00039B66 /* Assets.xcassets */,
-				AD42A34D1F6ACC650023151C /* BaseInteractor.swift */,
-				ADE65DA01F59921A00F5B710 /* BaseInteractorWorker.swift */,
 				AD6C690E1F390A4E00039B66 /* Info.plist */,
 				AD4142E21F6FD78E00A83795 /* LaunchScreen.storyboard */,
 				AD6C69061F390A4E00039B66 /* Main.storyboard */,
@@ -147,11 +142,18 @@
 			path = "insights-for-instagramTests";
 			sourceTree = "<group>";
 		};
+		ADC34C192025FAD5008E7875 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				ADD71BE81F6AE4AC00251445 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		ADD71B891F6AE32A00251445 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				ADD71BE91F6AE4AC00251445 /* AppConfiguration.swift */,
-				ADD71BE81F6AE4AC00251445 /* AppDataStore.swift */,
 				ADD71BEA1F6AE4AC00251445 /* AppDelegate.swift */,
 				ADD71BEB1F6AE4AC00251445 /* AppExtensions.swift */,
 				ADD71BE61F6AE4AC00251445 /* AppUserAccount.swift */,
@@ -464,12 +466,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD42A34E1F6ACC650023151C /* BaseInteractor.swift in Sources */,
 				ADD71BDD1F6AE49B00251445 /* InsightsPresenter.swift in Sources */,
-				ADD71BF21F6AE4AC00251445 /* AppDataStore.swift in Sources */,
+				ADD71BF21F6AE4AC00251445 /* DataService.swift in Sources */,
 				ADD71BE01F6AE49B00251445 /* InsightsViewController.swift in Sources */,
 				ADD71BEC1F6AE4AC00251445 /* AppUserAccount.swift in Sources */,
-				ADE65DA11F59921A00F5B710 /* BaseInteractorWorker.swift in Sources */,
 				ADD71C021F6AE4C100251445 /* AccountViewController.swift in Sources */,
 				ADD71C0B1F6AE4C100251445 /* AddAccountInteractor.swift in Sources */,
 				ADD71BF51F6AE4AC00251445 /* AppConfiguration.swift in Sources */,
