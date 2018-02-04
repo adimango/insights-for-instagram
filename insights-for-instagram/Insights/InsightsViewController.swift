@@ -1,7 +1,7 @@
 import UIKit
 
 protocol InsightsViewDisplayLogic: class {
-    func diplayFetchedMedia (instagramMediaSections: [InstagramMediaSection])
+    func diplayFetchedMedia(instagramMediaSections: [InstagramMediaSection], weekday: String)
     func diplayFetchMediaFailureAlert(title: String, message: String)
 }
 
@@ -103,11 +103,11 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
         }
     }
         
-    func diplayFetchedMedia(instagramMediaSections: [InstagramMediaSection]) {
+    func diplayFetchedMedia(instagramMediaSections: [InstagramMediaSection], weekday: String) {
         self.sections = instagramMediaSections
         DispatchQueue.main.async {
             self.footerView?.isHidden = false
-            self.weekdayLabel.text = DataService.weekday()
+            self.weekdayLabel.text = weekday
             self.refreshController.endRefreshing()
             self.tableView.reloadData()
         }
