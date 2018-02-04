@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="OKS-hm-khu">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="OKS-hm-khu" userLabel="Header">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -52,6 +52,67 @@
                                 <constraint firstAttribute="bottom" secondItem="4dO-Iu-9Ez" secondAttribute="bottom" constant="15" id="dw0-46-TdA"/>
                             </constraints>
                         </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="AuA-z4-vXQ" userLabel="Footer">
+                            <rect key="frame" x="0.0" y="83" width="320" height="200"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH6-hT-hFq" userLabel="WeekdayBlue">
+                                    <rect key="frame" x="20" y="46" width="279" height="133"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekday." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mma-WH-dqA" userLabel="WeekdayLabel">
+                                            <rect key="frame" x="46" y="41" width="188" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="47T-IG-GLM"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="Mma-WH-dqA" firstAttribute="centerX" secondItem="JH6-hT-hFq" secondAttribute="centerX" id="WZL-cB-1bV"/>
+                                        <constraint firstItem="Mma-WH-dqA" firstAttribute="centerY" secondItem="JH6-hT-hFq" secondAttribute="centerY" id="Xgt-Ut-SW3"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Best Day to Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6i-Ho-9L4" userLabel="WeekdayTitleLabel">
+                                    <rect key="frame" x="20" y="8" width="279" height="27"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27" id="M9R-QC-kkq"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9g-N7-BEs" userLabel="Separator">
+                                    <rect key="frame" x="20" y="0.0" width="300" height="0.5"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="lq3-8e-BJQ"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="JH6-hT-hFq" secondAttribute="bottom" constant="21" id="Bhh-7U-67L"/>
+                                <constraint firstAttribute="trailing" secondItem="S9g-N7-BEs" secondAttribute="trailing" id="FYt-nZ-XGM"/>
+                                <constraint firstItem="S9g-N7-BEs" firstAttribute="leading" secondItem="AuA-z4-vXQ" secondAttribute="leading" constant="20" id="Ibs-wR-T8L"/>
+                                <constraint firstItem="Q6i-Ho-9L4" firstAttribute="trailing" secondItem="JH6-hT-hFq" secondAttribute="trailing" id="OLf-2n-C1s"/>
+                                <constraint firstAttribute="trailing" secondItem="JH6-hT-hFq" secondAttribute="trailing" constant="21" id="PNb-BN-QxD"/>
+                                <constraint firstItem="Q6i-Ho-9L4" firstAttribute="top" secondItem="AuA-z4-vXQ" secondAttribute="top" constant="8" id="R3n-VW-hIT"/>
+                                <constraint firstItem="JH6-hT-hFq" firstAttribute="top" secondItem="AuA-z4-vXQ" secondAttribute="top" constant="46" id="UcS-Q1-QVu"/>
+                                <constraint firstItem="JH6-hT-hFq" firstAttribute="leading" secondItem="AuA-z4-vXQ" secondAttribute="leading" constant="20" id="ere-lG-9lu"/>
+                                <constraint firstItem="Q6i-Ho-9L4" firstAttribute="leading" secondItem="JH6-hT-hFq" secondAttribute="leading" id="ln3-WV-4c0"/>
+                                <constraint firstItem="Q6i-Ho-9L4" firstAttribute="leading" secondItem="AuA-z4-vXQ" secondAttribute="leading" constant="20" id="pCv-yf-KPE"/>
+                                <constraint firstItem="S9g-N7-BEs" firstAttribute="top" secondItem="AuA-z4-vXQ" secondAttribute="top" id="rXb-fF-3ml"/>
+                            </constraints>
+                        </view>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="Ch5-O9-Ye5" id="P7C-ZE-IvU"/>
@@ -67,12 +128,14 @@
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="footerView" destination="AuA-z4-vXQ" id="shM-JA-JeO"/>
                         <outlet property="refreshController" destination="S7E-Wr-Of8" id="Vz3-bD-Fp4"/>
+                        <outlet property="weekdayLabel" destination="Mma-WH-dqA" id="NZp-03-SZ0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHe-Uq-TEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2011.594202898551" y="-638.31521739130437"/>
+            <point key="canvasLocation" x="2010" y="-639.08450704225356"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

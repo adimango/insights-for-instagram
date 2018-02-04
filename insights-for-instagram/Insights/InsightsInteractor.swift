@@ -1,14 +1,6 @@
-//
-//  InsightsInteractor.swift
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import UIKit
 
-class InsightsInteractor: BaseInteractor {
+class InsightsInteractor {
     
     // MARK: - Properties
     
@@ -16,8 +8,7 @@ class InsightsInteractor: BaseInteractor {
     
     // MARK: Object lifecycle
     
-    override init() {
-        super.init()
+    init() {
         NotificationCenter.default.addObserver(self, selector: #selector(InsightsInteractor.loadMedia), name: AppConfiguration.DefaultsNotifications.reload, object: nil)
     }
     
@@ -27,35 +18,34 @@ class InsightsInteractor: BaseInteractor {
     
     // MARK: - Load media
     
-    @objc override func loadMedia() {
-        guard let name = AppUserAccount().name else {
-            accountName = nil
+    @objc func loadMedia() {
+        guard let userName = AppUserAccount().name else {
             loadEmptyMedia()
             return
         }
-        accountName = name
         loadStoredMedia()
-        guard let request = createFetchMediaRequest(offset: nil) else {
-            return
+        DataService.media(for: userName) { (error) in
+            if error == nil {
+                self.loadStoredMedia()
+            }
         }
-        performFetchMedia(request: request)
     }
     
-    override func loadEmptyMedia() {
+    func loadEmptyMedia() {
         presenter?.presentNoAccountSections()
     }
     
-    override func loadStoredMedia() {
-        let bestEngagement = AppDataStore.getBestEngagement(with: 25)
-        let lastWeeksPosted = AppDataStore.getLastWeeksPosted(weeks: 12)
-        let topMostCommented = AppDataStore.getMostLiked(with: 25)
+    func loadStoredMedia() {
+        let bestEngagement = DataService.bestEngagement(with: 25)
+        let lastWeeksPosted = DataService.lastWeeksPosted(weeks: 12)
+        let topMostCommented = DataService.mostLiked(with: 25)
         let bestEngagementDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.zero, "items": bestEngagement]
         let mostCommentedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.one, "items": topMostCommented]
         let lastWeeksPostedDictionary: [String: Any] = ["sectionTitle": AppConfiguration.TableViewSections.two, "items": lastWeeksPosted]
         presenter?.presentLoadedSections(with: [bestEngagementDictionary, mostCommentedDictionary, lastWeeksPostedDictionary])
     }
     
-    override func loadFetchMediaFailureAlert(error: Error) {
+    func loadFetchMediaFailureAlert(error: Error) {
         presenter?.presentAlertController(with: error.localizedDescription)
     }
 }

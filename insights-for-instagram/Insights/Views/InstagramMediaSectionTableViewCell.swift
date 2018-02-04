@@ -1,11 +1,3 @@
-//
-//  InstagramMediaSectionTableViewCell.swift
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -81,58 +73,5 @@ extension InstagramMediaSectionTableViewCell {
     var collectionViewOffset: CGFloat {
         set { itemsCollectionView.contentOffset.x = newValue }
         get { return itemsCollectionView.contentOffset.x }
-    }
-}
-
-// MARK: InstagramMediaViewCell
-
-class InstagramMediaCollectionViewCell: UICollectionViewCell {
-    
-    // MARK: Object lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Properties
-    
-    let imageView: UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleAspectFill
-        image.layer.cornerRadius = 4
-        image.layer.masksToBounds = true
-        image.image = UIImage(named: "placeHolder")
-        return image
-    }()
-    
-    let likesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
-        return label
-    }()
-    
-    let commentsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
-        label.textColor = UIColor.lightGray
-        return label
-    }()
-    
-    func setupViews() {
-        addSubview(imageView)
-        addSubview(likesLabel)
-        addSubview(commentsLabel)
-        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
-        likesLabel.frame = CGRect(x: 0, y: frame.width + 6, width: frame.width, height: 16)
-        commentsLabel.frame = CGRect(x: 0, y: frame.width + 25, width: frame.width, height: 16)
-    }
-    
-    override func prepareForReuse() {
-        imageView.image = UIImage(named: "placeHolder")
     }
 }

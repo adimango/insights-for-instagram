@@ -1,60 +1,26 @@
-//
-//  AddAccountInteractor.swift
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import UIKit
 
-class AddAccountInteractor: BaseInteractor {
+class AddAccountInteractor {
     
     // MARK: - Properties    
     
     var presenter: AddAccountPresenter?
-    
-    // MARK: - Load media
-    
-    override func loadMedia() {
-        guard let name = AppUserAccount().name else {
-            accountName = nil
-            return
-        }
-        accountName = name
-        guard let request = createFetchMediaRequest(offset: nil) else {
-            return
-        }
-        performFetchMedia(request: request)
-    }
-    
-    override func loadStoredMedia () {
-        presenter?.presentReportsCompleted()
-        NotificationCenter.default.post(name: AppConfiguration.DefaultsNotifications.reload, object: nil)
-    }
-    
-    override func loadEmptyMedia() {}
     
     // MARK: - Storing/updating account logic
     
     func validateAccount(with userName: String) {
         presenter?.presentLoadingIndicator()
         if AppUserAccount().name != userName { //remove old account data
-            AppDataStore.deleteAll()
+            DataService.deleteAll()
         }
-        InstagramProvider.request(.userMedia(userName)) { result in
-            do {
-                let response = try result.dematerialize()
-                let value: [String: Any] = try response.mapNSArray()
-                guard let items = value["data"] as? [[String: Any]], items.isEmpty == false else {
-                    self.stopLoading(with: AppConfiguration.Messages.privateAccountMessage)
-                    return
-                }
-                AppUserAccount().name = userName
-                self.loadMedia()
-            } catch {
-                self.stopLoading(with: error.localizedDescription)
+        
+        DataService.media(for: userName) { (error) in
+            guard let error = error else {
+                self.presenter?.presentReportsCompleted()
+                NotificationCenter.default.post(name: AppConfiguration.DefaultsNotifications.reload, object: nil)
+                return
             }
+            self.stopLoading(with: error)
         }
     }
     
@@ -67,9 +33,8 @@ class AddAccountInteractor: BaseInteractor {
     }
     
     func deleteAccount() {
-        accountName = nil
         presenter?.presentAddAccount()
-        AppDataStore.deleteAll()
+        DataService.deleteAll()
     }
     
     private func stopLoading(with message: String) {

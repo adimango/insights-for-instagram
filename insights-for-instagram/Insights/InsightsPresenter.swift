@@ -1,11 +1,3 @@
-//
-//  InsightsPresenter.swift
-//  insights-for-instagram
-//
-//  Created by Alex Di Mango on 02/09/2017.
-//  Copyright © 2017 Alex Di Mango. All rights reserved.
-//
-
 import Foundation
 import UIKit
 
@@ -47,14 +39,15 @@ class InsightsPresenter: InstagramMediaPresentation {
             let instagramMediaSection = InstagramMediaSection(sectionTitle: sectionTitle, instagramMediaViews: instagramMediaViews)
             instagramMediaSections.append(instagramMediaSection)
         }
-        viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections)
+        let weekday = DataService.weekday()
+        viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections, weekday: weekday)
     }
     
     // MARK: - Present no account UI
     
     func presentNoAccountSections() {
         let instagramMediaSections = createPlaceHolderSection()
-        viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections)
+        viewController?.diplayFetchedMedia(instagramMediaSections: instagramMediaSections, weekday: NSLocalizedString("Weekday.", comment: ""))
     }
     
     private func createPlaceHolderSection() -> [InstagramMediaSection] {
