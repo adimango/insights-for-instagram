@@ -1,5 +1,4 @@
 import UIKit
-import Kingfisher
 
 protocol InsightsViewDisplayLogic: class {
     func diplayFetchedMedia (instagramMediaSections: [InstagramMediaSection])
@@ -15,6 +14,8 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
     var sections: [InstagramMediaSection]?
     var storedOffsets = [Int: CGFloat]()
 
+    @IBOutlet weak var footerView: UIView?
+    @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var refreshController: UIRefreshControl!
     
     // MARK: Object lifecycle
@@ -52,6 +53,7 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         tableView.separatorStyle = .none
+        self.footerView?.isHidden = true
     }
     
     // MARK: - Fetch Media
@@ -104,6 +106,8 @@ class InsightsViewController: UITableViewController, InsightsViewDisplayLogic {
     func diplayFetchedMedia(instagramMediaSections: [InstagramMediaSection]) {
         self.sections = instagramMediaSections
         DispatchQueue.main.async {
+            self.footerView?.isHidden = false
+            self.weekdayLabel.text = DataService.weekday()
             self.refreshController.endRefreshing()
             self.tableView.reloadData()
         }
@@ -133,11 +137,7 @@ extension InsightsViewController: UICollectionViewDelegate, UICollectionViewData
         let media = instagramMediaSection?.instagramMediaViews[indexPath.row]
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppConfiguration.TableViewCellIdentifiers.cell, for: indexPath) as?
             InstagramMediaCollectionViewCell else { return InstagramMediaCollectionViewCell() }
-        cell.likesLabel.text = media?.likes
-        cell.commentsLabel.text = media?.comments
-        if let imageUrl = media?.imageURL, let url = URL(string: imageUrl) {
-            cell.imageView.kf.setImage(with: url)
-        }
+        cell.mediaModelView = media
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

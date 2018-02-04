@@ -1,5 +1,15 @@
 import RealmSwift
 
+enum Weekday: Int {
+    case sunday = 1
+    case monday = 2
+    case tuesday = 3
+    case wednesday = 4
+    case thursday = 5
+    case friday = 6
+    case saturday = 7
+}
+
 class DataService {
     
     static func media( for userName: String, completion: @escaping ( _ error: String?) -> Void) {
@@ -21,6 +31,24 @@ class DataService {
         }
     }
     
+    // Creates/updates media
+    static func importInstagramMedia(instagramMedia: [[String: Any]], completion: @escaping () -> Void) {
+        DispatchQueue.global().async {
+            guard let realm = try? Realm() else { return }
+            realm.beginWrite()
+            for media in instagramMedia {
+                guard let instagramMedia = InstagramMedia(JSON: media) else {
+                    continue
+                }
+                realm.add(instagramMedia, update: true)
+            }
+            try? realm.commitWrite()
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
+    
     // Returns the top n most liked
     static func mostLiked (with limit: Int ) -> [InstagramMedia] {
         // paginating behavior isn’t necessary at all: https://realm.io/docs/swift/latest/#limiting-results
@@ -36,7 +64,7 @@ class DataService {
     static func lastWeeksPosted (weeks: Int) -> [InstagramMedia] {
         guard let realm = try? Realm() else { return [] }
         guard let fromDate = Calendar.current.date(byAdding: .day, value: -(7 * weeks), to: Date()) else { return [] }
-        let predicate = NSPredicate(format: "createdTime > %@", fromDate as CVarArg)
+        let predicate = NSPredicate(format: "createdTime > %@", fromDate as NSDate)
         let medias = realm.objects(InstagramMedia.self).sorted(byKeyPath: "createdTime", ascending: false).filter(predicate)
         return Array(medias)
     }
@@ -64,40 +92,57 @@ class DataService {
         }
     }
     
-    // Creates/updates media
-    static func importInstagramMedia(instagramMedia: [[String: Any]], completion: @escaping () -> Void) {
-        DispatchQueue.global().async {
-            guard let realm = try? Realm() else { return }
-            realm.beginWrite()
-            for media in instagramMedia {
-                guard let instagramMedia = InstagramMedia(JSON: media) else {
-                    continue
-                }
-                realm.add(instagramMedia, update: true)
-            }
-            try? realm.commitWrite()
-            DispatchQueue.main.async {
-                completion()
-            }
+    // Weekday
+    // swiftlint:disable:next cyclomatic_complexity
+    static func weekday() -> String {
+        
+        guard let realm = try? Realm() else { return "" }
+        
+        var predicateArray = [NSPredicate]()
+        var groupbyArray = [[InstagramMedia]]()
+        var summedEngagementArray = [(Int, Int)]()
+
+        for weekday in 1...7 {
+            let predicate = NSPredicate(format: "weekday == %d", weekday)
+            predicateArray.append(predicate)
+        }
+        for weekday in predicateArray.indices {
+            let medias = Array(realm.objects(InstagramMedia.self).filter(predicateArray[weekday]))
+            groupbyArray.append(medias)
+        }
+        for weekday in groupbyArray.indices {
+            let array = groupbyArray[weekday]
+            summedEngagementArray.append(DataService.sumEngagement(for: array, day: weekday))
+        }
+        
+        summedEngagementArray = summedEngagementArray.sorted(by: { $0.0 > $1.0 })
+
+        switch summedEngagementArray[0].1 {
+        case Weekday.sunday.rawValue:
+            return "Sunday."
+        case Weekday.monday.rawValue:
+            return "Monday."
+        case Weekday.tuesday.rawValue:
+            return "Tuesday."
+        case Weekday.wednesday.rawValue:
+            return "Wednesday."
+        case Weekday.thursday.rawValue:
+            return "Thursday."
+        case Weekday.friday.rawValue:
+            return "Friday."
+        case Weekday.saturday.rawValue:
+            return "Saturday."
+        default:
+            return "Weekday."
         }
     }
     
-    func importInstagramMedia(instagramMedia: [[String: Any]], completion: @escaping () -> Void) {
-        DispatchQueue.global().async {
-            guard let realm = try? Realm() else { return }
-            realm.beginWrite()
-            for media in instagramMedia {
-                guard let instagramMedia = InstagramMedia(JSON: media) else {
-                    continue
-                }
-                print("add")
-                realm.add(instagramMedia, update: true)
-            }
-            try? realm.commitWrite()
-            DispatchQueue.main.async {
-                completion()
-            }
+    static func sumEngagement(for array: [InstagramMedia], day: Int) -> (Int, Int) {
+        var engagmentSum = 0
+        for media in array {
+            engagmentSum += media.engagementCount
         }
+        return (engagmentSum, day + 1)
     }
     
     static func deleteAll() {
