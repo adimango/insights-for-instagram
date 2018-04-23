@@ -66,3 +66,7 @@ The app is using a new Instragram API proxy, developed using `/graphql/query` an
 https://insights-for-instagram.herokuapp.com/api/users/natgeo/media 
 ```
 
+### April 04, 2018: Instagram API for users ids no more public 
+
+Unfortunately, due to changes in the Instagram API it is no longer possible to retrieve IDs for other Instagram accounts. 
+
