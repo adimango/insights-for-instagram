@@ -52,9 +52,17 @@ MIT License. See [LICENSE](LICENSE).
 
 ## Updates
 
-### Dec 01, 2017: Breaking Changes
 
-The Instragram API media endpoints now returns to 404-pages. After more of 20k downloads in just few month, Instagram removed the public API. However, the advanced queries are still available and a workaround will be push soon!
+### Apr 04, 2018: Banned private API
+
+Instagram has banned getting data from `https://www.instagram.com/{username}/?__a=1`
+With a bit of javascript we can still get the same json as before, but there are not workarounds yet for the get items queries.
+
+```
+// GET /api/users/:user_name -> returns user account details
+// Below an example with National Geographic
+https://insights-for-instagram.herokuapp.com/api/users/natgeo
+```
 
 ### Dec 09, 2017: Back on Track
 
@@ -65,3 +73,8 @@ The app is using a new Instragram API proxy, developed using `/graphql/query` an
 // Below an example with National Geographic
 https://insights-for-instagram.herokuapp.com/api/users/natgeo/media 
 ```
+
+### Dec 01, 2017: Breaking Changes
+
+The Instragram API media endpoints now returns to 404-pages. After more of 20k downloads in just few month, Instagram removed the public API. However, the advanced queries are still available and a workaround will be push soon!
+
